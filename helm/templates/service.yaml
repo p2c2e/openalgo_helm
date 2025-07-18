@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "openalgo.fullname" . }}
+  labels:
+    app: {{ include "openalgo.name" . }}
+    chart: {{ include "openalgo.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 5000
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ include "openalgo.name" . }}
+    release: {{ .Release.Name }}
