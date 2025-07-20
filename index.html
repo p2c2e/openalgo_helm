@@ -1,1 +1,49 @@
-<h1>TEST PAGE</h1>
+<h1>OpenAlgo Helm Chart</h1>
+<p>This repository contains the Helm chart for deploying OpenAlgo.</p>
+<h2>Helm Chart Deployment</h2>
+<p>Follow these steps to deploy the OpenAlgo Helm chart:</p>
+<h3>Prerequisites</h3>
+<ul>
+<li><a href="https://helm.sh/docs/intro/install/">Helm</a> must be installed on your system.</li>
+<li>(Optional) Ensure you have access to a Kubernetes cluster and the correct kubeconfig context is set.</li>
+</ul>
+<h3>1. Add the Helm Repository</h3>
+<pre><code class="language-sh">helm repo add openalgo-test https://helm.diyd2.in/
+</code></pre>
+<h3>2. Update the Helm Repositories</h3>
+<pre><code class="language-sh">helm repo update
+</code></pre>
+<h3>3. (Optional) Create a Namespace</h3>
+<p>If you want to install into a specific namespace (e.g., <code>openalgo</code>):</p>
+<pre><code class="language-sh">kubectl create namespace openalgo
+</code></pre>
+<h3>4. Test the Installation with a Dry Run</h3>
+<pre><code class="language-sh">helm install openalgo openalgo-test/openalgo --debug --dry-run
+</code></pre>
+<h3>5. Install the Chart</h3>
+<pre><code class="language-sh">helm install openalgo openalgo-test/openalgo
+</code></pre>
+<ul>
+<li><p>To install into a specific namespace, add <code>-n openalgo</code> to the command:</p>
+<pre><code class="language-sh">helm install openalgo openalgo-test/openalgo -n openalgo
+</code></pre>
+</li>
+</ul>
+<h3>6. Uninstall the Chart</h3>
+<p>To uninstall the release:</p>
+<pre><code class="language-sh">helm uninstall openalgo
+</code></pre>
+<ul>
+<li><p>If installed in a namespace:</p>
+<pre><code class="language-sh">helm uninstall openalgo -n openalgo
+</code></pre>
+</li>
+</ul>
+<h3>7. Additional Configuration</h3>
+<p>You can override default values using the <code>--set</code> flag or by providing a custom <code>values.yaml</code> file:</p>
+<pre><code class="language-sh">helm install openalgo openalgo-test/openalgo --set key=value
+# or
+helm install openalgo openalgo-test/openalgo -f my-values.yaml
+</code></pre>
+<p>For application specific information, refer to <a href="https://openalgo.in">OpenAlgo project</a></p>
+<p>For more details, refer to the <a href="https://helm.sh/docs/">Helm documentation</a>.</p>
