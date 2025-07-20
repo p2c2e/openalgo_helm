@@ -1,6 +1,6 @@
 apiVersion: v2
 name: openalgo
-description: Helm chart Test2 for deploying the OpenAlgo application - see https://www.openalgo.in/
+description: Helm chart Test3 for deploying the OpenAlgo application - see https://www.openalgo.in/
 type: application
 version: 1.0.0-26
 appVersion: "1.0.0.26"
