@@ -19,6 +19,10 @@ spec:
         app: {{ include "openalgo.name" . }}
         release: {{ .Release.Name }}
     spec:
+      volumes:
+        - name: env-file
+          configMap:
+            name: {{ include "openalgo.fullname" . }}-env
       containers:
         - name: openalgo
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -34,3 +38,7 @@ spec:
               value: {{ $value | quote }}
             {{- end }}
           resources: {}
+          volumeMounts:
+            - name: env-file
+              mountPath: /app/.env
+              subPath: .env

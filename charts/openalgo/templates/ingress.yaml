@@ -10,16 +10,14 @@ metadata:
     heritage: {{ .Release.Service }}
   annotations:
     {{- if eq .Values.ingress.controller "traefik" }}
-    traefik.ingress.kubernetes.io/router.entrypoints: web
-    traefik.ingress.kubernetes.io/router.rule: Host(`{{ .Values.openalgoPublicUrl }}`)
-    traefik.ingress.kubernetes.io/router.middlewares: ""
+    traefik.ingress.kubernetes.io/router.entrypoints: "web, websecure"
     {{- else if eq .Values.ingress.controller "nginx" }}
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     {{- end }}
 spec:
   rules:
-    - host: {{ .Values.openalgoPublicUrl }}
+    - host: {{ .Values.openalgoPublicUrl | quote }}
       http:
         paths:
           - path: /

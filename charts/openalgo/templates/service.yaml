@@ -13,7 +13,6 @@ spec:
     - port: {{ .Values.service.port }}
       targetPort: 5000
       protocol: TCP
-      name: http
   selector:
     app: {{ include "openalgo.name" . }}
     release: {{ .Release.Name }}
