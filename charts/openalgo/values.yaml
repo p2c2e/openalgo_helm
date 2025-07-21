@@ -14,14 +14,14 @@ ingress:
 
 secretEnv:
   BROKER_API_KEY: ""
+  BROKER_API_SECRET: ""
   BROKER_API_KEY_MARKET: ""
+  BROKER_API_SECRET_MARKET: ""
   APP_KEY: ""
   API_KEY_PEPPER: ""
 
 env:
   # Broker Configuration
-  BROKER_API_SECRET: ""
-  BROKER_API_SECRET_MARKET: ""
   REDIRECT_URL: "http://127.0.0.1:5000/<broker>/callback"
   VALID_BROKERS: "fivepaisa,fivepaisaxts,aliceblue,angel,compositedge,dhan,dhan_sandbox,firstock,flattrade,fyers,groww,ibulls,iifl,kotak,jainam,jainampro,paytm,pocketful,shoonya,tradejini,trustline,upstox,wisdom,zebu,zerodha"
 
