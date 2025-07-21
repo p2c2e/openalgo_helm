@@ -26,9 +26,9 @@ env:
   VALID_BROKERS: "fivepaisa,fivepaisaxts,aliceblue,angel,compositedge,dhan,dhan_sandbox,firstock,flattrade,fyers,groww,ibulls,iifl,kotak,jainam,jainampro,paytm,pocketful,shoonya,tradejini,trustline,upstox,wisdom,zebu,zerodha"
 
   # Database Configuration
-  DATABASE_URL: "sqlite:///db/openalgo.db"
-  LATENCY_DATABASE_URL: "sqlite:///db/latency.db"
-  LOGS_DATABASE_URL: "sqlite:///db/logs.db"
+  DATABASE_URL: "sqlite:////data/db/openalgo.db"
+  LATENCY_DATABASE_URL: "sqlite:////data/db/latency.db"
+  LOGS_DATABASE_URL: "sqlite:////data/db/logs.db"
 
   # Ngrok/Host Configuration
   NGROK_ALLOW: "FALSE"
@@ -99,3 +99,11 @@ env:
   CSRF_TIME_LIMIT: ""
   SESSION_COOKIE_NAME: "session"
   CSRF_COOKIE_NAME: "csrf_token"
+
+# Persistent Volume configuration
+persistentVolume:
+  pvcEnabled: true
+  storageClass: ""
+  size: 1Gi
+  accessModes:
+    - ReadWriteMany
