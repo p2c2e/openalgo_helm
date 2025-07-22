@@ -102,8 +102,15 @@ env:
 
 # Persistent Volume configuration
 persistentVolume:
-  pvcEnabled: true
-  storageClass: ""
+  pvcEnabled: false
+  pvEnabled: false
+  # PersistentVolume settings for static binding (used if pvEnabled: true)
+  volumeName: openalgo-pv
+  volumeHandle: openalgo-volume
+  claimName: openalgo-test-pvc
+  claimNamespace: openalgo
+  reclaimPolicy: Retain
+  storageClass: longhorn-retain
   size: 1Gi
   accessModes:
     - ReadWriteMany

@@ -11,7 +11,7 @@ metadata:
   annotations:
     {{- if eq .Values.ingress.controller "traefik" }}
     traefik.ingress.kubernetes.io/router.entrypoints: "web, websecure"
-    traefik.ingress.kubernetes.io/router.middlewares: "{{ include "openalgo.fullname" . }}-strip-ws@kubernetescrd"
+    traefik.ingress.kubernetes.io/router.middlewares: "{{ .Release.Namespace }}-{{ include "openalgo.fullname" . }}-strip-ws@kubernetescrd"
     {{- else if eq .Values.ingress.controller "nginx" }}
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/ssl-redirect: "true"

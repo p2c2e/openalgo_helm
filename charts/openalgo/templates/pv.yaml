@@ -1,0 +1,22 @@
+{{- if and .Values.persistentVolume.pvcEnabled .Values.persistentVolume.pvEnabled }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ .Values.persistentVolume.volumeName | default (printf "%s-pv" (include "openalgo.fullname" .)) }}
+spec:
+  capacity:
+    storage: {{ .Values.persistentVolume.size | quote }}
+  accessModes:
+    {{- range .Values.persistentVolume.accessModes }}
+    - {{ . | quote }}
+    {{- end }}
+  persistentVolumeReclaimPolicy: {{ .Values.persistentVolume.reclaimPolicy | default "Retain" }}
+  storageClassName: {{ .Values.persistentVolume.storageClass | quote }}
+  csi:
+    driver: driver.longhorn.io
+    fsType: ext4
+    volumeHandle: {{ .Values.persistentVolume.volumeHandle | default (printf "%s-volume" (include "openalgo.fullname" .)) }}
+  claimRef:
+    namespace: {{ .Release.Namespace }}
+    name: {{ include "openalgo.fullname" . }}-data
+{{- end }}
