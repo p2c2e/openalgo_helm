@@ -114,3 +114,4 @@ persistentVolume:
   size: 1Gi
   accessModes:
     - ReadWriteMany
+  mountPath: /data

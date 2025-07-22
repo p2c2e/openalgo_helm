@@ -50,5 +50,5 @@ spec:
               subPath: .env
           {{- if .Values.persistentVolume.pvcEnabled }}
             - name: data
-              mountPath: /data
+              mountPath: {{ .Values.persistentVolume.mountPath | quote }}
           {{- end }}
