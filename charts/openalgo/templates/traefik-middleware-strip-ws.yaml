@@ -1,0 +1,10 @@
+{{- if and .Values.ingress.enabled (eq .Values.ingress.controller "traefik") }}
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: {{ include "openalgo.fullname" . }}-strip-ws
+spec:
+  stripPrefix:
+    prefixes:
+      - /ws
+{{- end }}

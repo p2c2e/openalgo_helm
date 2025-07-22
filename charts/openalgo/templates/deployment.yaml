@@ -23,17 +23,18 @@ spec:
         - name: env-file
           configMap:
             name: {{ include "openalgo.fullname" . }}-env
-        {{- if .Values.persistentVolume.pvcEnabled }}
+      {{- if .Values.persistentVolume.pvcEnabled }}
         - name: data
           persistentVolumeClaim:
             claimName: {{ include "openalgo.fullname" . }}-data
-        {{- end }}
+      {{- end }}
       containers:
         - name: openalgo
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: 5000
+            - containerPort: 8765
           envFrom:
             - secretRef:
                 name: {{ include "openalgo.fullname" . }}-secret
@@ -47,7 +48,7 @@ spec:
             - name: env-file
               mountPath: /app/.env
               subPath: .env
-            {{- if .Values.persistentVolume.pvcEnabled }}
+          {{- if .Values.persistentVolume.pvcEnabled }}
             - name: data
               mountPath: /data
-            {{- end }}
+          {{- end }}

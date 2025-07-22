@@ -10,8 +10,13 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
+    - name: http
+      port: {{ .Values.service.port }}
       targetPort: 5000
+      protocol: TCP
+    - name: ws
+      port: 8765
+      targetPort: 8765
       protocol: TCP
   selector:
     app: {{ include "openalgo.name" . }}
