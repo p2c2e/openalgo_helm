@@ -1,0 +1,17 @@
+{{- if .Values.persistentVolume.pvcEnabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "openalgo.fullname" . }}-data
+spec:
+  accessModes:
+    {{- range .Values.persistentVolume.accessModes }}
+    - {{ . | quote }}
+    {{- end }}
+  resources:
+    requests:
+      storage: {{ .Values.persistentVolume.size | quote }}
+  {{- if .Values.persistentVolume.storageClass }}
+  storageClassName: {{ .Values.persistentVolume.storageClass | quote }}
+  {{- end }}
+{{- end }}
