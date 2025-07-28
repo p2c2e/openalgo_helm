@@ -3,6 +3,16 @@ entries:
   openalgo:
   - apiVersion: v2
     appVersion: 1.0.0.27
+    created: "2025-07-28T07:22:15.729404308Z"
+    description: Helm chart for deploying the OpenAlgo application - see https://www.openalgo.in/
+    digest: 0b92b20fb2c20824b984f6ba360873debb6144d9ab23eba1ed2c7695b2c91523
+    name: openalgo
+    type: application
+    urls:
+    - https://github.com/p2c2e/openalgo_helm/releases/download/openalgo-2025.07.28/openalgo-2025.07.28.tgz
+    version: 2025.07.28
+  - apiVersion: v2
+    appVersion: 1.0.0.27
     created: "2025-07-21T14:58:10.41410499Z"
     description: Helm chart for deploying the OpenAlgo application - see https://www.openalgo.in/
     digest: b8235ef20be97bd3cf21e49c26e5eeac8da3cc70b3e901663b993a10d31a6864
@@ -41,4 +51,4 @@ entries:
     urls:
     - https://github.com/p2c2e/openalgo_helm/releases/download/openalgo-1.0.0-26/openalgo-1.0.0-26.tgz
     version: 1.0.0-26
-generated: "2025-07-21T14:58:10.41412616Z"
+generated: "2025-07-28T07:22:15.729451006Z"
