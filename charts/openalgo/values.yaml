@@ -66,6 +66,7 @@ env:
   SMART_ORDER_RATE_LIMIT: "2 per second"
   WEBHOOK_RATE_LIMIT: "100 per minute"
   STRATEGY_RATE_LIMIT: "200 per minute"
+  RESET_RATE_LIMIT: "15 per hour"
 
   # API Config
   SMART_ORDER_DELAY: "0.5"
