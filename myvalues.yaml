@@ -1,0 +1,20 @@
+image:
+ repository: sudhan/openalgo
+ tag: latest
+ pullPolicy: Always
+ 
+openalgoPublicUrl: "myhost.domain.com"
+ingress:
+  enabled: true
+  controller: traefik # Options: traefik, nginx
+
+secretEnv:
+  BROKER_API_KEY: "MYKEY"
+  BROKER_API_SECRET: "MYSECRET"
+  APP_KEY: "MYAPPKEY"
+  API_KEY_PEPPER: "MYAPP_PEPPER"
+
+
+env:
+  REDIRECT_URL: "https://myhost.domain.com/zerodha/callback"
+
