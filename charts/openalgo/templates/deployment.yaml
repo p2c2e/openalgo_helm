@@ -19,6 +19,11 @@ spec:
         app: {{ include "openalgo.name" . }}
         release: {{ .Release.Name }}
     spec:
+      {{- if .Values.securityContext.enabled }}
+      securityContext:
+        fsGroup: {{ .Values.securityContext.fsGroup }}
+        fsGroupChangePolicy: {{ .Values.securityContext.fsGroupChangePolicy }}
+      {{- end }}
       volumes:
         - name: env-file
           configMap:
@@ -32,6 +37,13 @@ spec:
         - name: openalgo
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if .Values.securityContext.enabled }}
+          securityContext:
+            runAsUser: {{ .Values.securityContext.runAsUser }}
+            runAsGroup: {{ .Values.securityContext.runAsGroup }}
+            runAsNonRoot: {{ .Values.securityContext.runAsNonRoot }}
+            allowPrivilegeEscalation: {{ .Values.securityContext.allowPrivilegeEscalation }}
+          {{- end }}
           ports:
             - containerPort: 5000
             - containerPort: 8765

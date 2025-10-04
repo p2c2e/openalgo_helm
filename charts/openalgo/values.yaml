@@ -29,6 +29,7 @@ env:
   DATABASE_URL: "sqlite:////data/db/openalgo.db"
   LATENCY_DATABASE_URL: "sqlite:////data/db/latency.db"
   LOGS_DATABASE_URL: "sqlite:////data/db/logs.db"
+  SANDBOX_DATABASE_URL: "sqlite:////data/db/sandbox.db"
 
   # Ngrok/Host Configuration
   NGROK_ALLOW: "FALSE"
@@ -104,6 +105,18 @@ env:
   CSRF_TIME_LIMIT: ""
   SESSION_COOKIE_NAME: "session"
   CSRF_COOKIE_NAME: "csrf_token"
+
+# Security Context configuration
+securityContext:
+  enabled: true
+  # Run as non-root user (appuser in the container)
+  runAsUser: 1000
+  runAsGroup: 1000
+  runAsNonRoot: true
+  allowPrivilegeEscalation: false
+  # Set fsGroup to ensure mounted volumes have correct permissions
+  fsGroup: 1000
+  fsGroupChangePolicy: "Always"
 
 # Persistent Volume configuration
 persistentVolume:
